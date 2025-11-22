@@ -5,7 +5,7 @@ export function renderKeywordChart(keywords) {
 
   const gradient = context.createLinearGradient(0, 0, 0, 400);
 
-  // Define the background color of the chart
+  // Define the background colour of the chart
   gradient.addColorStop(0, "rgba(37, 99, 235, 0.8)");
   gradient.addColorStop(1, "rgba(37, 99, 235, 0.2)");
 
