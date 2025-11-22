@@ -27,6 +27,7 @@ final class DashboardMetrics
     {
         return [
             'most_common_category' => $this->getMostCommonCategory(),
+            'category_distribution' => $this->getCategoryDistribution(),
             'avg_headline_length' => $this->getAverageHeadlineLength(),
         ];
     }
@@ -50,6 +51,21 @@ final class DashboardMetrics
         );
 
         return round($totalWords / count($this->articles), 1);
+    }
+
+    /**
+     * Calculates the distribution of categories.
+     *
+     * @return array<string, int> An associative array where keys are categories and values are their occurrence counts.
+     */
+    private function getCategoryDistribution(): array
+    {
+        return array_count_values(
+            array_map(
+                fn (array $article): string => $article['category'] ?? 'Unknown',
+                $this->articles
+            )
+        );
     }
 
     /**

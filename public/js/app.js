@@ -1,4 +1,4 @@
-import { renderChart } from './render_charts.js';
+import { renderKeywordChart, renderCategoryChart } from './render_charts.js';
 import { renderSummary } from './render_summary.js';
 import { renderArticles } from './render_articles.js';
 
@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const newsGrid = document.getElementById("news_grid");
 
   try {
-    loader.classList.remove("hidden");
+    if (loader) {
+      loader.classList.remove("hidden");
+    }
 
     const response = await fetch("api/scrape.php");
 
@@ -22,9 +24,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     renderSummary(data);
-    renderChart(data.keywords);
+    renderKeywordChart(data.keywords);
+    renderCategoryChart(data.metrics.category_distribution);
     renderArticles(data.articles, newsGrid);
-
   } catch (error) {
     newsGrid.innerHTML = `<div class="alert alert-danger text-center">Error loading data: ${error.message}</div>`;
   } finally {
