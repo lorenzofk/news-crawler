@@ -40,7 +40,6 @@ try {
     ], JSON_PRETTY_PRINT);
 }
 
-
 function buildMetaData(): array
 {
     return [
