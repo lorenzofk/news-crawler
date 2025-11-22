@@ -1,0 +1,92 @@
+body {
+  background-color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+
+footer {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* News grid */
+#news_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding: 1rem;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #e2e8f0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.news-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.news-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+}
+
+.news-card .badge {
+  transform: translateY(-6px);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
+}
+
+.news-card img {
+  transition: filter 0.3s ease;
+}
+
+.news-card:hover img {
+  filter: brightness(0.9);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .news-card .card-body {
+    padding: 0.75rem 1rem;
+  }
+  
+  #news_grid {
+    gap: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Spinner loader */
+#loader {
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
